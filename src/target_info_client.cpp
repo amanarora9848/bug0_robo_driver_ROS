@@ -4,7 +4,6 @@
 #include <assignment_2_2022/PlanningAction.h>
 #include <unige_rt1_assignment2/RoboStatusMsg.h>
 #include <nav_msgs/Odometry.h>
-#include <map>
 
 
 class RoboClient {
@@ -15,7 +14,7 @@ class RoboClient {
     ros::Subscriber robot_pos_vel_subscriber;
     // ROS::Publisher for robot position and velocity;
     ros::Publisher robot_pos_vel_publisher;
-    
+
     public:
     RoboClient(ros::NodeHandle *n, double freq)
     {
@@ -46,7 +45,6 @@ class RoboClient {
         // Get x and y position goal as user input in real-time
         std::string goal_input;
         double x, y;
-        std::map<std::string, double> goal_map;
         ros::Rate *rrate;
 
         rrate = new ros::Rate(freq);
@@ -55,10 +53,9 @@ class RoboClient {
         x = 2.0;
         y = -5.0;
 
-        // Setting parameter for goal position for node C
-        goal_map["x"] = x;
-        goal_map["y"] = y;
-        n->setParam("/robot/goal_pos_param", goal_map);
+        // Setting parameters for goal position for node C
+        n->setParam("/robot/goal_pos_param/x_goal", x);
+        n->setParam("/robot/goal_pos_param/y_goal", y);
 
         // send the initial goal to the action
         assignment_2_2022::PlanningGoal goal;
@@ -89,9 +86,8 @@ class RoboClient {
                 goal.target_pose.pose.position.y = y;
                 target_ac.sendGoal(goal);
                 // Setting parameter for goal position for node C
-                goal_map["x"] = x;
-                goal_map["y"] = y;
-                n->setParam("/robot/goal_pos_param", goal_map);
+                n->setParam("/robot/goal_pos_param/x_goal", x);
+                n->setParam("/robot/goal_pos_param/y_goal", y);
                 // break;
             }
             else if (goal_input == "c") {

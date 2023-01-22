@@ -1,16 +1,14 @@
 #include <ros/ros.h>
 #include <unige_rt1_assignment2/RoboStatusMsg.h>
-#include <map>
 
 class RoboInfo {
     private:
     // Subscriber to robot position and velocity using custom message type
     ros::Subscriber robot_pos_vel_subscriber;
     // Map which saves goal position retrieved from the parameter server
-    std::map<std::string, double> goal_map = {
-        {"x", 0.0},
-        {"y", 0.0}
-    };
+    double x_goal = 0.0;
+    double y_goal = 0.0;
+    
     // Variables for robot position and velocity
     double pos_x, pos_y, vel_x, vel_z;
     int elapsed_time = 0;
@@ -24,7 +22,8 @@ class RoboInfo {
         // Check for the goal position parameter on the parameter server
         if (n->hasParam("/robot/goal_pos_param")) {
             // Get the value of the parameter
-            n->getParam("/robot/goal_pos_param", goal_map);
+            n->getParam("/robot/goal_pos_param/x_goal", x_goal);
+            n->getParam("/robot/goal_pos_param/y_goal", y_goal);
         }
         else{
             ROS_ERROR("Goal position parameter not found on the parameter server");
@@ -58,7 +57,7 @@ class RoboInfo {
         ROS_INFO("Robot position: (%f, %f)", pos_x, pos_y);
         ROS_INFO("Robot velocity: (%f, %f)", vel_x, vel_z);
         // Print goal position
-        ROS_INFO("Goal position: (%f, %f)", goal_map["x"], goal_map["y"]);
+        ROS_INFO("Goal position: (%f, %f)", x_goal, y_goal);
         // Print distance from goal
         ROS_INFO("Distance from goal: %f", distance_from_goal(pos_x, pos_y));
         // Print average speed
@@ -67,7 +66,7 @@ class RoboInfo {
 
     double distance_from_goal(double x, double y){
         // calculate distance from goal
-        double distance = sqrt(pow(x - goal_map["x"], 2) + pow(y - goal_map["y"], 2));
+        double distance = sqrt(pow(x - x_goal, 2) + pow(y - y_goal, 2));
         return distance;
     }
 

@@ -1,0 +1,12 @@
+<launch>
+
+    <!-- Include package  assignment_2_2022 -->
+    <include file="$(find assignment_2_2022)/launch/complete_sim.launch"/>
+    <!-- Launch the target_info_client_node -->
+    <node name="target_info_client" pkg="unige_rt1_assignment2" type="target_info_client.cpp" output="screen" launch-prefix="xterm -e" />
+    <!-- Launch the robo_info_node -->
+    <node name="robo_info_node" pkg="unige_rt1_assignment2" type="robo_info.cpp" output="screen" launch-prefix="xterm -e" />
+    <!-- Launch the goal_info_srv_node -->
+    <node name="goal_info_srv_node" pkg="unige_rt1_assignment2" type="goal_info_srv.cpp" output="screen" launch-prefix="xterm -e" />
+
+</launch>
