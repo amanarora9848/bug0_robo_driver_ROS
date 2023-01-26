@@ -235,7 +235,7 @@ This package uses 4 + 1 nodes for the task to be done effectively and holistical
 This package uses C++ classes for implementation of the ROS Nodes, since the use of classes not only provides structure and clarity to the code, but also aids in proper management of data and methods. We also avoid using unnecessary global variables in the code. The programs simply become more modular, with reusable chunks which are beneficial in larger projects.
 
 
-## Possible Implovements
+## Possible Improvements
 - The client console can be made even more robust, error-free and interactive, since some of the erroneous user-inputs have not been handled.
 - An interactive GUI on the console can be created.
 - Currently, there is no exit button / command, and the easiest way to exit simulation is using `Ctrl-C` on the main console, where `roslaunch` command is used. Better mechanism can be developed.
