@@ -10,14 +10,14 @@ Three (or four) principle nodes have been developed as part of this package:
 - **Node 1b** (`robot_status_pub_node`)
     - This node subscribes to `/odom` topic and publishes the retrieved position and velocity values using a custom ROS message (`RoboStatusMsg.msg`) to the topic `/robot/robo_stats`.
 - **Node 2** (`goal_info_srv_node`)
-    - This ROS service node serves the number of goals reached by the robot and cancelled by the user. To get the number of goals, this subscibes to the topic `/reaching_goal_result` and increments each value accordingly, depending on the returned status of the goal.
+    - This ROS service node serves the number of goals reached by the robot and cancelled by the user. To get the number of goals, this subscibes to the topic `/reaching_goal_result` and increments each value accordingly, depending on the returned status of the robot reaching goal or not.
 - **Node 3** (`robo_info_node`)
     - This node subscribes to the topic `/robot/robo_stats` to obtain robot's position and velocity using our custom message and displays these parameters along with robot's distance from goal and average speed.
 
 In addition to these, in order to show the implementation of a ROS Service-Client, a node: (`disp_goals_node`) has also been created, that calls the Service Server node `goal_info_srv_node` and prints the number of goals reached and cancelled.
 
 ## Requirements
-The overall project has been well tested using ROS Noetic and required RViz and Gazebo for simulation and physics.
+The overall project has been well tested using ROS Noetic and requires RViz and Gazebo for simulation and physics.
 
 ## Directory Structure [Package: unige_rt1_assignment2]
 ```
@@ -237,3 +237,9 @@ This package uses C++ classes for implementation of the ROS Nodes, since the use
 - The client console can be made even more robust, error-free and interactive, since some of the erroneous user-inputs have not been handled.
 - An interactive GUI on the console can be created.
 - Currently, there is no exit button / command, and the easiest way to exit simulation is using `Ctrl-C` on the main console, where `roslaunch` command is used. Better mechanism can be developed.
+
+
+## Helpful references / documentation / answers:
+
+- http://wiki.ros.org/actionlib/DetailedDescription
+- http://docs.ros.org/en/api/actionlib_msgs/html/msg/GoalStatusArray.html
