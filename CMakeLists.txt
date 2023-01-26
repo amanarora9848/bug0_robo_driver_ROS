@@ -140,6 +140,8 @@ include_directories(
 add_executable(target_info_client_node src/target_info_client.cpp)
 add_executable(robo_info_node src/robo_info.cpp)
 add_executable(goal_info_srv_node src/goal_info_srv.cpp)
+add_executable(disp_goals_node src/disp_goals.cpp)
+add_executable(robot_status_pub_node src/robot_status_pub.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -153,6 +155,8 @@ add_executable(goal_info_srv_node src/goal_info_srv.cpp)
 add_dependencies(target_info_client_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(robo_info_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(goal_info_srv_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(disp_goals_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(robot_status_pub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(target_info_client_node
@@ -162,6 +166,12 @@ target_link_libraries(robo_info_node
   ${catkin_LIBRARIES}
 )
 target_link_libraries(goal_info_srv_node
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(disp_goals_node
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(robot_status_pub_node
   ${catkin_LIBRARIES}
 )
 
