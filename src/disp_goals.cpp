@@ -20,7 +20,6 @@ class GoalInfoClient {
         while(ros::ok()) {
             // Call the service
             if (goal_info_client.call(goal_info_srv)) {
-                // std::cout << "[ INFO] [" << ros::Time::now() << "]: " << goal_info_srv.response.msg_feedback << std::endl;
                 ROS_INFO_STREAM(goal_info_srv.response.msg_feedback);
             }
             else {
@@ -39,10 +38,13 @@ class GoalInfoClient {
 int main(int argc, char **argv) {
     // Initialize the node
     ros::init(argc, argv, "disp_goals_node");
-    // Create the node handler
+
+    // Create a ROS NodeHandle object
     ros::NodeHandle n;
+
     // Create the goal info client object
     GoalInfoClient goal_info_client(&n, atof(argv[1]));
+    
     // exit
     return 0;
 }

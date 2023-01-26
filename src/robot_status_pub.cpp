@@ -36,8 +36,7 @@ class RobotStatusPublisher {
         delete loop_rate;
     }
 
-    void odom_callback(const nav_msgs::Odometry::ConstPtr& msg)
-    {
+    void odom_callback(const nav_msgs::Odometry::ConstPtr& msg) {
         // This function gets the x and y pos, and linear x and y velocities from odom.
         // Position
         pos_x = msg->pose.pose.position.x;
@@ -51,8 +50,13 @@ class RobotStatusPublisher {
 int main(int argc, char **argv) {
     // Initialize the ROS system and become a node.
     ros::init(argc, argv, "robot_status_pub_node");
+
+    // Create a ROS NodeHandle object
     ros::NodeHandle n;
+
     // Create an instance of the RobotStatusPublisher class
     RobotStatusPublisher robot_status_publisher(&n, atof(argv[1]));
+
+    // exit
     return 0;
 }

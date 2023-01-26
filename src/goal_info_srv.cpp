@@ -24,8 +24,7 @@ class GoalsService {
         ros::spin();
     }
 
-    void target_result_callback(const assignment_2_2022::PlanningActionResult::ConstPtr& msg)
-    {
+    void target_result_callback(const assignment_2_2022::PlanningActionResult::ConstPtr& msg) {
         if (msg->status.status == 3) {
             goals_reached += 1;
         }
@@ -45,10 +44,13 @@ class GoalsService {
 int main(int argc, char **argv) {
     // Initialize the node
     ros::init(argc, argv, "goal_info_srv_node");
-    // Create the node handler
+
+    // Create a ROS NodeHandle object
     ros::NodeHandle n;
+
     // Create the goals service object
     GoalsService goals_service(&n);
+
     // exit
     return 0;
 }

@@ -3,8 +3,7 @@
 #include <actionlib/client/terminal_state.h>
 #include <assignment_2_2022/PlanningAction.h>
 #include <unige_rt1_assignment2/RoboStatusMsg.h>
-#include <nav_msgs/Odometry.h>
-
+#include <stack>
 
 class RoboClient {
     private:
@@ -13,9 +12,10 @@ class RoboClient {
     // Declare input string for user command
     std::string goal_input;
 
+    std::stack<char> goal_stack;
+
     public:
-    RoboClient(ros::NodeHandle *n)
-    {
+    RoboClient(ros::NodeHandle *n) {
         // create the action client, true causes the client to spin its own thread
         actionlib::SimpleActionClient<assignment_2_2022::PlanningAction> target_ac("/reaching_goal", true);
 
@@ -23,17 +23,21 @@ class RoboClient {
         // wait for the action server to start
         target_ac.waitForServer(); //will wait for infinite time
 
-        ROS_INFO("Action server started, sending goal.");
+        ROS_INFO("Action server started! Press [ ENTER ] to request a goal.");
 
-        std::cout << std::endl;
+        std::cout << "\n==========================================\n" << std::endl;
 
         // send the initial goal to the action
         assignment_2_2022::PlanningGoal goal;
 
         while(ros::ok()) {
-            std::cout << "Enter [ c ] to cancel the current goal (if still in execution), or [ g ] to input required goal position: ";
+            std::cout << "Enter [ p ] to input required goal position, or enter [ q ] to cancel the current set goal: ";
             std::cin >> goal_input;
-            if (goal_input == "g") {
+            // = std::cin.get();
+            if (goal_input == "p") {
+                if (!goal_stack.empty()) {
+                    goal_stack.pop();
+                }
                 // Get x and y position from user
                 std::cout << "Enter required goal position x y: ";
                 std::cin >> x >> y;
@@ -41,28 +45,43 @@ class RoboClient {
                 goal.target_pose.pose.position.y = y;
                 target_ac.sendGoal(goal);
                 // Set the goal positions in the parameter server variables
-                if (n->hasParam("/robot/goal_pos_param/x_goal") && n->hasParam("/robot/goal_pos_param/y_goal")) {
+                if (n->hasParam("/robot/goal_pos_param")) {
                     n->setParam("/robot/goal_pos_param/x_goal", x);
                     n->setParam("/robot/goal_pos_param/y_goal", y);
                 }
                 else {
-                    ROS_ERROR("Goal position parameter not found on the parameter server");
+                    ROS_ERROR("Goal position parameter not found on the parameter server.");
                 }
             }
-            else if (goal_input == "c") {
-                std::cout << "Cancelling..." << std::endl;
-                target_ac.cancelGoal();
+            else if (goal_input == "q") {
+                if (goal_stack.empty()) {
+                    goal_stack.push('q');
+                    if (target_ac.getState() == actionlib::SimpleClientGoalState::ACTIVE) {
+                        std::cout << "Cancelling current goal..." << std::endl;
+                        target_ac.cancelGoal();
+                    }
+                    else{
+                        std::cout << "No goal is currently executing." << std::endl;
+                    }
+                }
+                else if (goal_stack.top() == 'q') {
+                    std::cout << "No goal is currently executing." << std::endl;
+                }
+                else {
+                    std::cout << "Invalid input. Please press [ ENTER ] to input x and y values." << std::endl;
+                }
             }
             else {
-                std::cout << "Invalid input. Please enter either 'g' or 'c' again." << std::endl;
+                std::cout << "Invalid input. Please enter [ ENTER ] or 'q' again." << std::endl;
             }
+
+            std::cout << "\n==========================================\n" << std::endl;
 
             // Check for new messages from the subscribed topics
             ros::spinOnce();
         }
     }
 };
-
 
 int main (int argc, char **argv) {
     // Initialize the robot_nav_client node
@@ -71,6 +90,7 @@ int main (int argc, char **argv) {
     // Create a ROS NodeHandle object
     ros::NodeHandle n;
 
+    // Create the robot action client object
     RoboClient rc(&n);
 
     //exit
