@@ -92,9 +92,8 @@ Using this command launches the simulation (particularly the node-C at the defau
 
 ```roslaunch unige_rt1_assignment2 complete_sim.launch freq:=3```
 
-***Below is an example of the simulation running:***
-<embed type="video/webm" src="https://youtu.be/TDBa1oudBaU">
-<!-- [Implementation Video](https://youtu.be/TDBa1oudBaU) -->
+***Here is an example of the simulation running:
+[Implementation Video](https://youtu.be/TDBa1oudBaU)***
 
 ## Project Explanation and Implementation
 
