@@ -13,7 +13,7 @@ class RobotStatusPublisher {
 
     public:
     RobotStatusPublisher(ros::NodeHandle *n, double freq) {
-        // Subscribe to /odom topic to read the position and velocity of the robot with the subscribing queue size of 10
+        // Subscribe to /odom topic to read the position and velocity of the robot with the subscribing queue size of 1
         robot_pos_vel_subscriber = n->subscribe("/odom", 1, &RobotStatusPublisher::odom_callback, this);
         // Inform ROS master that we will be publishing a message of type geometry_msgs::Twist on the robot actuation topic with a publishing queue size of 10
         robot_pos_vel_publisher = n->advertise<unige_rt1_assignment2::RoboStatusMsg>("/robot/robo_stats", 10);

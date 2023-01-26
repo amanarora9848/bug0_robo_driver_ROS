@@ -2,7 +2,6 @@
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <assignment_2_2022/PlanningAction.h>
-#include <unige_rt1_assignment2/RoboStatusMsg.h>
 #include <stack>
 
 class RoboClient {
@@ -33,8 +32,8 @@ class RoboClient {
         while(ros::ok()) {
             std::cout << "Enter [ p ] to input required goal position, or enter [ q ] to cancel the current set goal: ";
             std::cin >> goal_input;
-            // = std::cin.get();
             if (goal_input == "p") {
+                // Check if q was previously entered and remove it from the stack
                 if (!goal_stack.empty()) {
                     goal_stack.pop();
                 }
@@ -54,6 +53,7 @@ class RoboClient {
                 }
             }
             else if (goal_input == "q") {
+                // Ensure that q has not already been pressed by user
                 if (goal_stack.empty()) {
                     goal_stack.push('q');
                     if (target_ac.getState() == actionlib::SimpleClientGoalState::ACTIVE) {
