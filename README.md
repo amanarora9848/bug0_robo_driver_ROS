@@ -20,7 +20,7 @@ In addition to these, in order to show the implementation of a ROS Service-Clien
 The overall project has been well tested using ROS Noetic and required RViz and Gazebo for simulation and physics.
 
 ## Directory Structure [Package: unige_rt1_assignment2]
-```shell
+```
 .
 |-- CMakeLists.txt
 |-- LICENSE
@@ -92,8 +92,8 @@ Using this command launches the simulation (particularly the node-C at the defau
 
 ```roslaunch unige_rt1_assignment2 complete_sim.launch freq:=3```
 
-Below is an example of the simulation running:
-[Implementation Video](https://youtu.be/TDBa1oudBaU)
+***Below is an example of the simulation running:
+[Implementation Video](https://youtu.be/TDBa1oudBaU)***
 
 ## Project Explanation and Implementation
 
