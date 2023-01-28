@@ -122,7 +122,7 @@ This package uses 4 + 1 nodes for the task to be done effectively and holistical
             send goal to action server
             set goal in parameter server variables
         else if input is cancel:
-            if cancel not passed before: // not in stack
+            if cancel not passed before: // stack is empty
                 push cancel command to stack
                 if action server status is executing goal:
                     send cancel to action server
@@ -133,7 +133,7 @@ This package uses 4 + 1 nodes for the task to be done effectively and holistical
                 prohibit cancel command
             end
         else:
-            prohibit cancel command
+            tell user that input is invalid
         end
 
     ```
