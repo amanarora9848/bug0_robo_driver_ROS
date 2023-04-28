@@ -1,0 +1,52 @@
+\hypertarget{goal__info__srv_8cpp}{}\doxysection{src/goal\+\_\+info\+\_\+srv.cpp File Reference}
+\label{goal__info__srv_8cpp}\index{src/goal\_info\_srv.cpp@{src/goal\_info\_srv.cpp}}
+
+
+Goal information service node.  
+
+
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$unige\+\_\+rt1\+\_\+assignment2/\+Goal\+Info.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib\+\_\+msgs/\+Goal\+Status\+Array.\+h$>$}\newline
+{\ttfamily \#include $<$assignment\+\_\+2\+\_\+2022/\+Planning\+Action.\+h$>$}\newline
+Include dependency graph for goal\+\_\+info\+\_\+srv.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{goal__info__srv_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_goals_service}{Goals\+Service}}
+\begin{DoxyCompactList}\small\item\em Goals service class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{goal__info__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{goal__info__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+int {\bfseries main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Goal information service node. 
+
+\begin{DoxyAuthor}{Author}
+Aman Arora (\href{mailto:aman.arora9848@gmail.com}{\texttt{ aman.\+arora9848@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+15/03/2023
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ ° /reaching\+\_\+goal/result
+
+Services\+: ~\newline
+ ° /goals\+\_\+service
+
+Description\+:
+
+This node recieves the result of the action done by the user to send a goal and obtains this info from the topic /reaching\+\_\+goal/result. It also provides a service /goals\+\_\+service to provide the number of goals reached and cancelled. 

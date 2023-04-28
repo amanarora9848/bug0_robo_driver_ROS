@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['research_20track_201_20_2d_20assignment_202_20_28unige_29_0',['Research Track 1 - Assignment 2 (UniGe)',['../md_README.html',1,'']]]
+  ['average_5fspeed_0',['average_speed',['../class_robo_info.html#ab6bcdc92e36ac92c2322497931946dfe',1,'RoboInfo']]]
 ];

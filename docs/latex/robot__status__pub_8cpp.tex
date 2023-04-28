@@ -1,0 +1,51 @@
+\hypertarget{robot__status__pub_8cpp}{}\doxysection{src/robot\+\_\+status\+\_\+pub.cpp File Reference}
+\label{robot__status__pub_8cpp}\index{src/robot\_status\_pub.cpp@{src/robot\_status\_pub.cpp}}
+
+
+Status publisher node for the robot.  
+
+
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$unige\+\_\+rt1\+\_\+assignment2/\+Robo\+Status\+Msg.\+h$>$}\newline
+{\ttfamily \#include $<$nav\+\_\+msgs/\+Odometry.\+h$>$}\newline
+Include dependency graph for robot\+\_\+status\+\_\+pub.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{robot__status__pub_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_robot_status_publisher}{Robot\+Status\+Publisher}}
+\begin{DoxyCompactList}\small\item\em Publishes the position and velocity of the robot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{robot__status__pub_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{robot__status__pub_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+int {\bfseries main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Status publisher node for the robot. 
+
+\begin{DoxyAuthor}{Author}
+Aman Arora (\href{mailto:aman.arora9848@gmail.com}{\texttt{ aman.\+arora9848@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/03-\/15
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ ° /odom Publishes to\+: ~\newline
+ ° /robot/robo\+\_\+stats
+
+Description\+:
+
+This node is used to publish the position and velocity of the robot on the topic /robot/robo\+\_\+stats.
+
+It uses the message Robo\+Status\+Msg R\+OS message definition defined in this package. 

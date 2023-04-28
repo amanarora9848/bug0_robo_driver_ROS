@@ -1,0 +1,144 @@
+\hypertarget{class_robo_info}{}\doxysection{Robo\+Info Class Reference}
+\label{class_robo_info}\index{RoboInfo@{RoboInfo}}
+
+
+Robot information class.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robo_info_a312809b259dec0e5fd71b58b1b76b3b8}{Robo\+Info}} (ros\+::\+Node\+Handle $\ast$n, double freq)
+\item 
+void \mbox{\hyperlink{class_robo_info_ac88926a8cac48ba41d8d8df2e048baa8}{robo\+\_\+info\+\_\+callback}} (const unige\+\_\+rt1\+\_\+assignment2\+::\+Robo\+Status\+Msg\+::\+Const\+Ptr \&msg)
+\item 
+void \mbox{\hyperlink{class_robo_info_a2119ae4e2a9faca1aa7f5b524bf539c4}{show\+\_\+info}} ()
+\item 
+double \mbox{\hyperlink{class_robo_info_a50644d3841db556a2e6d60e25c876fa2}{distance\+\_\+from\+\_\+goal}} (double x, double y)
+\item 
+void \mbox{\hyperlink{class_robo_info_ab6bcdc92e36ac92c2322497931946dfe}{average\+\_\+speed}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Robot information class. 
+
+This class is used to create a node that subscribes to the topic /robot/robo\+\_\+stats and obtains the position and velocity of the robot. It also obtains the user given goal position from the parameter server.
+
+Member functions\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_robo_info_a312809b259dec0e5fd71b58b1b76b3b8}{Robo\+Info(ros\+::\+Node\+Handle $\ast$n, double freq)}}
+\begin{DoxyItemize}
+\item This is the constructor of the class.
+\end{DoxyItemize}
+\item \mbox{\hyperlink{class_robo_info_ac88926a8cac48ba41d8d8df2e048baa8}{robo\+\_\+info\+\_\+callback(const unige\+\_\+rt1\+\_\+assignment2\+::\+Robo\+Status\+Msg\+::\+Const\+Ptr\& msg)}}
+\begin{DoxyItemize}
+\item This is the callback function for the subscriber.
+\end{DoxyItemize}
+\item \mbox{\hyperlink{class_robo_info_a50644d3841db556a2e6d60e25c876fa2}{distance\+\_\+from\+\_\+goal(double x, double y)}}
+\begin{DoxyItemize}
+\item This function calculates the distance of the robot from the goal position.
+\end{DoxyItemize}
+\item \mbox{\hyperlink{class_robo_info_ab6bcdc92e36ac92c2322497931946dfe}{average\+\_\+speed()}}
+\begin{DoxyItemize}
+\item This function calculates the average speed of the robot in the x and y directions. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robo_info_a312809b259dec0e5fd71b58b1b76b3b8}\label{class_robo_info_a312809b259dec0e5fd71b58b1b76b3b8}} 
+\index{RoboInfo@{RoboInfo}!RoboInfo@{RoboInfo}}
+\index{RoboInfo@{RoboInfo}!RoboInfo@{RoboInfo}}
+\doxysubsubsection{\texorpdfstring{RoboInfo()}{RoboInfo()}}
+{\footnotesize\ttfamily Robo\+Info\+::\+Robo\+Info (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle $\ast$}]{n,  }\item[{double}]{freq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor of the \mbox{\hyperlink{class_robo_info}{Robo\+Info}} class. 
+\begin{DoxyParams}{Parameters}
+{\em n} & Pointer to the node handle. \\
+\hline
+{\em freq} & Frequency of the node.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function created a subscriber to the topic /robot/robo\+\_\+stats to get the robot position and velocity. It also obtains the user given goal position from the parameter server. The Subscriber calls the callback function \textquotesingle{}robo\+\_\+info\+\_\+callback\textquotesingle{}.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robo_info_ab6bcdc92e36ac92c2322497931946dfe}\label{class_robo_info_ab6bcdc92e36ac92c2322497931946dfe}} 
+\index{RoboInfo@{RoboInfo}!average\_speed@{average\_speed}}
+\index{average\_speed@{average\_speed}!RoboInfo@{RoboInfo}}
+\doxysubsubsection{\texorpdfstring{average\_speed()}{average\_speed()}}
+{\footnotesize\ttfamily void Robo\+Info\+::average\+\_\+speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to calculate average speed.
+
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function calculates the average speed of the robot in the x and y directions.
+
+$<$ Average speed in x direction
+
+$<$ Average speed in y direction\mbox{\Hypertarget{class_robo_info_a50644d3841db556a2e6d60e25c876fa2}\label{class_robo_info_a50644d3841db556a2e6d60e25c876fa2}} 
+\index{RoboInfo@{RoboInfo}!distance\_from\_goal@{distance\_from\_goal}}
+\index{distance\_from\_goal@{distance\_from\_goal}!RoboInfo@{RoboInfo}}
+\doxysubsubsection{\texorpdfstring{distance\_from\_goal()}{distance\_from\_goal()}}
+{\footnotesize\ttfamily double Robo\+Info\+::distance\+\_\+from\+\_\+goal (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to calculate distance from goal. 
+\begin{DoxyParams}{Parameters}
+{\em x} & Robot x position. \\
+\hline
+{\em y} & Robot y position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance Distance from goal.
+\end{DoxyReturn}
+This function calculates the distance of the robot from the goal position.
+
+$<$ Distance from goal\mbox{\Hypertarget{class_robo_info_ac88926a8cac48ba41d8d8df2e048baa8}\label{class_robo_info_ac88926a8cac48ba41d8d8df2e048baa8}} 
+\index{RoboInfo@{RoboInfo}!robo\_info\_callback@{robo\_info\_callback}}
+\index{robo\_info\_callback@{robo\_info\_callback}!RoboInfo@{RoboInfo}}
+\doxysubsubsection{\texorpdfstring{robo\_info\_callback()}{robo\_info\_callback()}}
+{\footnotesize\ttfamily void Robo\+Info\+::robo\+\_\+info\+\_\+callback (\begin{DoxyParamCaption}\item[{const unige\+\_\+rt1\+\_\+assignment2\+::\+Robo\+Status\+Msg\+::\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Callback function for the subscriber. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & Pointer to the message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function gets the x and y pos, and linear x and y velocities from Robo\+Satus\+Msg message.
+
+$<$ Robot x position set from message
+
+$<$ Robot y position set from message
+
+$<$ Robot x velocity set from message
+
+$<$ Robot y velocity set from message
+
+$<$ Total x velocity
+
+$<$ Total y velocity\mbox{\Hypertarget{class_robo_info_a2119ae4e2a9faca1aa7f5b524bf539c4}\label{class_robo_info_a2119ae4e2a9faca1aa7f5b524bf539c4}} 
+\index{RoboInfo@{RoboInfo}!show\_info@{show\_info}}
+\index{show\_info@{show\_info}!RoboInfo@{RoboInfo}}
+\doxysubsubsection{\texorpdfstring{show\_info()}{show\_info()}}
+{\footnotesize\ttfamily void Robo\+Info\+::show\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to print robot information.
+
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function prints the robot position and velocity, goal position, distance from goal and average speed.
+
+$<$ Function call to calculate average speed
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{robo__info_8cpp}{robo\+\_\+info.\+cpp}}\end{DoxyCompactItemize}

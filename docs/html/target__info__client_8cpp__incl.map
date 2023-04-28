@@ -1,0 +1,8 @@
+<map id="src/target_info_client.cpp" name="src/target_info_client.cpp">
+<area shape="rect" id="node1" title="Controller node for the robot to move to a target position. Implements an action client,..." alt="" coords="294,5,481,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,87,84,114"/>
+<area shape="rect" id="node3" title=" " alt="" coords="108,80,275,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="299,80,476,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="500,80,712,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="736,87,793,114"/>
+</map>

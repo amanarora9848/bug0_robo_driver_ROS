@@ -1,0 +1,66 @@
+\hypertarget{target__info__client_8cpp}{}\doxysection{src/target\+\_\+info\+\_\+client.cpp File Reference}
+\label{target__info__client_8cpp}\index{src/target\_info\_client.cpp@{src/target\_info\_client.cpp}}
+
+
+Controller node for the robot to move to a target position. Implements an action client, allowing the user to set a target position (x, y), or cancel it.  
+
+
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/simple\+\_\+action\+\_\+client.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/terminal\+\_\+state.\+h$>$}\newline
+{\ttfamily \#include $<$assignment\+\_\+2\+\_\+2022/\+Planning\+Action.\+h$>$}\newline
+{\ttfamily \#include $<$stack$>$}\newline
+Include dependency graph for target\+\_\+info\+\_\+client.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{target__info__client_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_robo_client}{Robo\+Client}}
+\begin{DoxyCompactList}\small\item\em Implements an action client, allowing the user to set a target position (x, y), or cancel it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{target__info__client_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{target__info__client_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+int {\bfseries main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller node for the robot to move to a target position. Implements an action client, allowing the user to set a target position (x, y), or cancel it. 
+
+\begin{DoxyAuthor}{Author}
+Aman Arora (\href{mailto:aman.arora9848@gmail.com}{\texttt{ aman.\+arora9848@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+15/03/2023
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em /robot/goal\+\_\+pos\+\_\+param/x\+\_\+goal} & The x position of the goal \\
+\hline
+\mbox{\texttt{ in}}  & {\em /robot/goal\+\_\+pos\+\_\+param/y\+\_\+goal} & The y position of the goal\\
+\hline
+\end{DoxyParams}
+Actions\+: ~\newline
+ ° /reaching\+\_\+goal
+
+Description\+:
+
+This node is used to create a client node that sends goals to the action server defined in package assignment\+\_\+2\+\_\+2022. It interacts wuth the action serverusing the Planning.\+action file defined in the package \char`\"{}assignment\+\_\+2\+\_\+2022\char`\"{}.
+
+Usage Instructions\+:
+\begin{DoxyItemize}
+\item After launching the simulation using the launch file\+:
+\begin{DoxyItemize}
+\item Enter \textquotesingle{}p\textquotesingle{} and press \mbox{[} E\+N\+T\+ER \mbox{]} to input a goal position (x, y) for the robot to move to.
+\item Enter \textquotesingle{}q\textquotesingle{} and press \mbox{[} E\+N\+T\+ER \mbox{]} to cancel the current goal. 
+\end{DoxyItemize}
+\end{DoxyItemize}

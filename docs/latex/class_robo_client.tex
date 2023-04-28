@@ -1,0 +1,98 @@
+\hypertarget{class_robo_client}{}\doxysection{Robo\+Client Class Reference}
+\label{class_robo_client}\index{RoboClient@{RoboClient}}
+
+
+Implements an action client, allowing the user to set a target position (x, y), or cancel it.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robo_client_a84ef9688e307b3fc75fa93502a8bdd27}{Robo\+Client}} (ros\+::\+Node\+Handle $\ast$n)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements an action client, allowing the user to set a target position (x, y), or cancel it. 
+
+This class is used to create a client node that sends goals to the action server defined in package assignment\+\_\+2\+\_\+2022. The user can input a goal position after entering \textquotesingle{}p\textquotesingle{} and pressing \mbox{[} E\+N\+T\+ER \mbox{]} and the robot will move to that position. The user can also cancel the current goal by entering \textquotesingle{}q\textquotesingle{}.
+
+The class contains the following functions\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_robo_client_a84ef9688e307b3fc75fa93502a8bdd27}{Robo\+Client(ros\+::\+Node\+Handle $\ast$n)}}
+\begin{DoxyItemize}
+\item This is the constructor of the class.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+The class contains the following variables\+:
+\begin{DoxyItemize}
+\item double x, y\+: The x and y position of the goal
+\item std\+::string goal\+\_\+input\+: The user input for the goal command
+\item std\+::stack$<$char$>$ goal\+\_\+stack\+: The stack to store the user commands
+\end{DoxyItemize}
+
+The class contains the following actionlib client\+:
+\begin{DoxyItemize}
+\item actionlib\+::\+Simple\+Action\+Client$<$assignment\+\_\+2\+\_\+2022\+::\+Planning\+Action$>$ target\+\_\+ac
+\begin{DoxyItemize}
+\item This is the actionlib client that sends goals to the action server. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robo_client_a84ef9688e307b3fc75fa93502a8bdd27}\label{class_robo_client_a84ef9688e307b3fc75fa93502a8bdd27}} 
+\index{RoboClient@{RoboClient}!RoboClient@{RoboClient}}
+\index{RoboClient@{RoboClient}!RoboClient@{RoboClient}}
+\doxysubsubsection{\texorpdfstring{RoboClient()}{RoboClient()}}
+{\footnotesize\ttfamily Robo\+Client\+::\+Robo\+Client (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle $\ast$}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for \mbox{\hyperlink{class_robo_client}{Robo\+Client}} class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The node handle object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This constructor is used to create the action client, and send goals to the action server. It also lets the user set a goal position (x, y) or cancel the current goal, which is given to the action server for execution and simulation.
+
+create the action client, true causes the client to spin its own thread
+
+$<$ Wait for the action server to start, will wait for infinite time
+
+send the initial goal to the action server
+
+$<$ Declare goal object
+
+Check if user input is p or q
+
+Check if q was previously entered and remove it from the stack
+
+$<$ Get x and y position from user
+
+Send goal to action server
+
+$<$ Set x position in goal object
+
+$<$ Set y position in goal object
+
+Set the goal positions in the parameter server variables
+
+$<$ Set x position in parameter server
+
+$<$ Set y position in parameter server
+
+$<$ Error message if parameter not found
+
+Ensure that q has not already been pressed by user
+
+Check if there is a goal currently executing
+
+Check for new messages from the subscribed topics
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{target__info__client_8cpp}{target\+\_\+info\+\_\+client.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,110 @@
+\hypertarget{class_goals_service}{}\doxysection{Goals\+Service Class Reference}
+\label{class_goals_service}\index{GoalsService@{GoalsService}}
+
+
+Goals service class.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_goals_service_a2bb788e04f7f30e5e12f605024e24576}{Goals\+Service}} (ros\+::\+Node\+Handle $\ast$n)
+\item 
+void \mbox{\hyperlink{class_goals_service_a3c2108b25f411b3f53b392ebecfb5f4a}{target\+\_\+result\+\_\+callback}} (const assignment\+\_\+2\+\_\+2022\+::\+Planning\+Action\+Result\+::\+Const\+Ptr \&msg)
+\item 
+bool \mbox{\hyperlink{class_goals_service_a199d42af80e0c878f5885a4d2eb83891}{goals\+\_\+service\+\_\+callback}} (unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info\+::\+Request \&req, unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info\+::\+Response \&res)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Goals service class. 
+
+This class is used to create a node that subscribes to the topic /reaching\+\_\+goal/result and obtains the result of the action done by the user to send a goal. It also provides a service /goals\+\_\+service to provide the number of goals reached and cancelled.
+
+Member functions\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_goals_service_a2bb788e04f7f30e5e12f605024e24576}{Goals\+Service(ros\+::\+Node\+Handle $\ast$n)}}
+\begin{DoxyItemize}
+\item This is the constructor of the class.
+\end{DoxyItemize}
+\item \mbox{\hyperlink{class_goals_service_a3c2108b25f411b3f53b392ebecfb5f4a}{target\+\_\+result\+\_\+callback(const assignment\+\_\+2\+\_\+2022\+::\+Planning\+Action\+Result\+::\+Const\+Ptr\& msg)}}
+\begin{DoxyItemize}
+\item This is the callback function for the subscriber.
+\end{DoxyItemize}
+\item \mbox{\hyperlink{class_goals_service_a199d42af80e0c878f5885a4d2eb83891}{goals\+\_\+service\+\_\+callback(unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info\+::\+Request \&req, unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info\+::\+Response \&res)}}
+\begin{DoxyItemize}
+\item This is the callback function for the service advertiser. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_goals_service_a2bb788e04f7f30e5e12f605024e24576}\label{class_goals_service_a2bb788e04f7f30e5e12f605024e24576}} 
+\index{GoalsService@{GoalsService}!GoalsService@{GoalsService}}
+\index{GoalsService@{GoalsService}!GoalsService@{GoalsService}}
+\doxysubsubsection{\texorpdfstring{GoalsService()}{GoalsService()}}
+{\footnotesize\ttfamily Goals\+Service\+::\+Goals\+Service (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle $\ast$}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for the class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Pointer to the node handle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This constructor creates a subscriber for the topic /reaching\+\_\+goal/result and a service server for the service /goals\+\_\+service.
+
+target\+\_\+result\+\_\+subscriber
+
+This variable is a subscriber for the topic /reaching\+\_\+goal/result for the result of the action.
+
+goals\+\_\+service\+\_\+server
+
+This variable is a service server for the service /goals\+\_\+service.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_goals_service_a199d42af80e0c878f5885a4d2eb83891}\label{class_goals_service_a199d42af80e0c878f5885a4d2eb83891}} 
+\index{GoalsService@{GoalsService}!goals\_service\_callback@{goals\_service\_callback}}
+\index{goals\_service\_callback@{goals\_service\_callback}!GoalsService@{GoalsService}}
+\doxysubsubsection{\texorpdfstring{goals\_service\_callback()}{goals\_service\_callback()}}
+{\footnotesize\ttfamily bool Goals\+Service\+::goals\+\_\+service\+\_\+callback (\begin{DoxyParamCaption}\item[{unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info\+::\+Request \&}]{req,  }\item[{unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info\+::\+Response \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Callback function for the service advertiser.
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & The request message of type Goal\+Info received on the service. \\
+\hline
+{\em res} & The response message of type Goal\+Info to be sent on the service.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool
+\end{DoxyReturn}
+This function gets called whenever a new service request arrives on the /goals\+\_\+service topic. It sets the response message and returns true.
+
+res.\+msg\+\_\+feedback
+
+This variable is the response message of type Goal\+Info to be sent on the service.\mbox{\Hypertarget{class_goals_service_a3c2108b25f411b3f53b392ebecfb5f4a}\label{class_goals_service_a3c2108b25f411b3f53b392ebecfb5f4a}} 
+\index{GoalsService@{GoalsService}!target\_result\_callback@{target\_result\_callback}}
+\index{target\_result\_callback@{target\_result\_callback}!GoalsService@{GoalsService}}
+\doxysubsubsection{\texorpdfstring{target\_result\_callback()}{target\_result\_callback()}}
+{\footnotesize\ttfamily void Goals\+Service\+::target\+\_\+result\+\_\+callback (\begin{DoxyParamCaption}\item[{const assignment\+\_\+2\+\_\+2022\+::\+Planning\+Action\+Result\+::\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Callback function for the subscriber.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The message of type Planning\+Action\+Result received on the topic.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function gets called whenever a new message arrives on the /reaching\+\_\+goal/result topic. It updates the variables goals\+\_\+reached and goals\+\_\+cancelled according to the status of the message.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{goal__info__srv_8cpp}{goal\+\_\+info\+\_\+srv.\+cpp}}\end{DoxyCompactItemize}

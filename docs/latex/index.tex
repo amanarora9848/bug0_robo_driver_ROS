@@ -1,0 +1,204 @@
+This is a client package for the package \href{https://github.com/CarmineD8/assignment_2_2022}{\texttt{ assignment\+\_\+2\+\_\+2022}} that provides an implementation of an action server, that moves a robot in the environment by implementing the bug0 algorithm. This is the 2nd asignment as part of the course\+: {\bfseries{Research Track 1}} at the University of Genoa, Italy.\hypertarget{index_autotoc_md0}{}\doxysection{Goals and Overview\+:}\label{index_autotoc_md0}
+Three (or four) principle nodes have been developed as part of this package\+:
+\begin{DoxyItemize}
+\item {\bfseries{Node 1a}} ({\ttfamily target\+\_\+info\+\_\+client\+\_\+node})
+\begin{DoxyItemize}
+\item Implements an action client, allowing the user to set a target position (x, y), or cancel it.
+\end{DoxyItemize}
+\item {\bfseries{Node 1b}} ({\ttfamily robot\+\_\+status\+\_\+pub\+\_\+node})
+\begin{DoxyItemize}
+\item This node subscribes to {\ttfamily /odom} topic and publishes the retrieved position and velocity values using a custom R\+OS message ({\ttfamily Robo\+Status\+Msg.\+msg}) to the topic {\ttfamily /robot/robo\+\_\+stats}.
+\end{DoxyItemize}
+\item {\bfseries{Node 2}} ({\ttfamily goal\+\_\+info\+\_\+srv\+\_\+node})
+\begin{DoxyItemize}
+\item This R\+OS service node serves the number of goals reached by the robot and cancelled by the user. To get the number of goals, this subscibes to the topic {\ttfamily /reaching\+\_\+goal\+\_\+result} and increments each value accordingly, depending on the returned status of the robot reaching goal or not.
+\end{DoxyItemize}
+\item {\bfseries{Node 3}} ({\ttfamily robo\+\_\+info\+\_\+node})
+\begin{DoxyItemize}
+\item This node subscribes to the topic {\ttfamily /robot/robo\+\_\+stats} to obtain robot\textquotesingle{}s position and velocity using our custom message and displays these parameters along with robot\textquotesingle{}s distance from goal and average speed.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In addition to these, in order to show the implementation of a R\+OS Service-\/\+Client, a node\+: ({\ttfamily disp\+\_\+goals\+\_\+node}) has also been created, that calls the Service Server node {\ttfamily goal\+\_\+info\+\_\+srv\+\_\+node} and prints the number of goals reached and cancelled.\hypertarget{index_autotoc_md1}{}\doxysection{Requirements}\label{index_autotoc_md1}
+The overall project has been well tested using R\+OS Noetic and requires R\+Viz and Gazebo for simulation and physics.\hypertarget{index_autotoc_md2}{}\doxysection{Directory Structure \mbox{[}\+Package\+: unige\+\_\+rt1\+\_\+assignment2\mbox{]}}\label{index_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.}
+\DoxyCodeLine{|-\/-\/ CMakeLists.txt}
+\DoxyCodeLine{|-\/-\/ LICENSE}
+\DoxyCodeLine{|-\/-\/ README.md}
+\DoxyCodeLine{|-\/-\/ config}
+\DoxyCodeLine{|   `-\/-\/ robot.yaml}
+\DoxyCodeLine{|-\/-\/ images}
+\DoxyCodeLine{|   `-\/-\/ rosgraph.png}
+\DoxyCodeLine{|-\/-\/ launch}
+\DoxyCodeLine{|   `-\/-\/ complete\_sim.launch}
+\DoxyCodeLine{|-\/-\/ msg}
+\DoxyCodeLine{|   `-\/-\/ RoboStatusMsg.msg}
+\DoxyCodeLine{|-\/-\/ package.xml}
+\DoxyCodeLine{|-\/-\/ src}
+\DoxyCodeLine{|   |-\/-\/ disp\_goals.cpp}
+\DoxyCodeLine{|   |-\/-\/ goal\_info\_srv.cpp}
+\DoxyCodeLine{|   |-\/-\/ robo\_info.cpp}
+\DoxyCodeLine{|   |-\/-\/ robot\_status\_pub.cpp}
+\DoxyCodeLine{|   `-\/-\/ target\_info\_client.cpp}
+\DoxyCodeLine{`-\/-\/ srv}
+\DoxyCodeLine{    `-\/-\/ GoalInfo.srv}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md3}{}\doxysection{Running the full simulation\+:}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md4}{}\doxysubsubsection{Update and upgrade packages\+:}\label{index_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo apt update \&\& sudo apt upgrade}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md5}{}\doxysubsubsection{First, we need to build a catkin workspace for the project. Navigate to preferred directory, then\+:}\label{index_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir -\/p bug0robo\_catkin\_workspace/src/}
+\DoxyCodeLine{cd bug0robo\_catkin\_workspace/src/}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md6}{}\doxysubsubsection{Initialize the catkin workspace\+:}\label{index_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{catkin\_init\_workspace}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md7}{}\doxysubsubsection{Now clone this repo and the action server repo (assuming user has ssh-\/auth setup)\+:}\label{index_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone git@github.com:amanarora9848/unige\_rt1\_assignment2.git}
+\DoxyCodeLine{git clone git@github.com:CarmineD8/assignment\_2\_2022.git}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md8}{}\doxysubsubsection{Navigate back to base directory $<$tt$>$bug0robo\+\_\+catkin\+\_\+workspace$<$/tt$>$}\label{index_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd ..}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md9}{}\doxysubsubsection{Run $<$tt$>$catkin\+\_\+make$<$/tt$>$ to build the package\+:}\label{index_autotoc_md9}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{catkin\_make}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md10}{}\doxysubsubsection{Source $<$tt$>$setup.\+bash$<$/tt$>$ to set the environment variables used by R\+OS}\label{index_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source devel/setup.bash}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md11}{}\doxysubsubsection{Launch the complete simulation. The launch file for this can be found in $<$tt$>$/src/unige\+\_\+rt1\+\_\+assignment2/launch/complete\+\_\+sim.\+launch$<$/tt$>$ relative to the current diretory\+:}\label{index_autotoc_md11}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{roslaunch unige\_rt1\_assignment2 complete\_sim.launch}
+\end{DoxyCode}
+
+
+Using this command launches the simulation (particularly the node-\/C at the default rate of 5 /sec). This can be changed by also passing an argument parameter, for example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{***Here is an example of the simulation running:}
+\DoxyCodeLine{[Implementation Video](https://youtu.be/TDBa1oudBaU)***}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\# Project Explanation and Implementation}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\# ROS rqt-\/graph (with nodes and topics) for the whole project (client-\/server)}
+\DoxyCodeLine{}
+\DoxyCodeLine{<img src="images/rosgraph.png" alt="rqt-\/graph">}
+\DoxyCodeLine{}
+\DoxyCodeLine{<!-\/-\/ [rqt-\/graph](images/rosgraph.png) -\/-\/>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\# ROS Nodes in detail:}
+\DoxyCodeLine{}
+\DoxyCodeLine{This package uses 4 + 1 nodes for the task to be done effectively and holistically. They are `target\_info\_client\_node`, `robot\_status\_pub\_node`, `goal\_info\_srv\_node`, `robo\_info\_node` and 1 extra node: `disp\_goals\_node`. }
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/ As seen from the rqt-\/graph, the action client node `target\_info\_client\_node` interacts with the action server defined in the package `assignment\_2\_2022` using the `Planning.action` file, in which are defined the action goal and feedback messages.}
+\DoxyCodeLine{}
+\DoxyCodeLine{    -\/ The pseudocode for this node is given below:}
+\end{DoxyCode}
+ \begin{DoxyVerb}while ros is running:
+    take user input to proceed or cancel goal
+
+    if input is proceed:
+        if cancel command passed before (is in stack):
+            pop cancel command from stack
+        end
+        take user input for x and y
+        send goal to action server
+        set goal in parameter server variables
+    else if input is cancel:
+        if cancel not passed before: // stack is empty
+            push cancel command to stack
+            if action server status is executing goal:
+                send cancel to action server
+            else:
+                prohibit cancel command
+            end
+        else if cancel in stack:
+            prohibit cancel command
+        end
+    else:
+        tell user that input is invalid
+    end
+
+```
+\end{DoxyVerb}
+
+
+
+\begin{DoxyItemize}
+\item The {\ttfamily robot\+\_\+status\+\_\+pub\+\_\+node} subscribes to the {\ttfamily /odom} topic for position and velocity of the robot and publishes them at the topic {\ttfamily /robot/robo\+\_\+stats}.
+\begin{DoxyItemize}
+\item The pseudocode for this node is given below\+: \`{}\`{}\`{} subscribe to /odom topic check for /odom callbacks set x, y, vel\+\_\+x, vel\+\_\+y in callbacks while ros is running\+: set user x, y, vel\+\_\+x, vel\+\_\+y obtained from /odom publish these as custom message to /robot/robo\+\_\+stats topic at user defined rate
+\end{DoxyItemize}
+
+\`{}\`{}\`{}
+\begin{DoxyItemize}
+\item Given below is the custom message definition. \`{}\`{}\`{} 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_autotoc_md12}{}\doxysection{A custom message for robot position and velocity}\label{index_autotoc_md12}
+float32 pos\+\_\+x float32 pos\+\_\+y float32 vel\+\_\+x float32 vel\+\_\+y \`{}\`{}\`{}
+
+
+\begin{DoxyItemize}
+\item The node {\ttfamily robo\+\_\+info\+\_\+node} recieves these robot position and velocity values by subscribing to the {\ttfamily /robot/robo\+\_\+stats}, along with obtaining the user-\/given goal position from the parameter server. The parameter server variables have been configured in the configuration file {\ttfamily robot.\+yaml} present in the {\itshape {\bfseries{config}}} folder. \`{}\`{}\`{}yaml robot\+: \{ goal\+\_\+pos\+\_\+param\+: \{ x\+\_\+goal\+: 0, y\+\_\+goal\+: 0 \} \} \`{}\`{}\`{}
+\begin{DoxyItemize}
+\item Using these values, the distance to the goal and theaverage velocities are calculated.
+\end{DoxyItemize}
+\item The node {\ttfamily goal\+\_\+info\+\_\+srv\+\_\+node} also interacts with the action server messages and receives the status message ({\ttfamily assignment\+\_\+2\+\_\+2022\+::\+Planning\+Action\+Result\+::\+Const\+Ptr\& msg}) from it, to determine the number of goals reached or cancelled.
+\begin{DoxyItemize}
+\item The pseudocode for this node\+: \`{}\`{}\`{} Declare service goal\+\_\+service
+\end{DoxyItemize}
+
+Subscribe to /reaching\+\_\+goal/result topic from action server Check for /reaching\+\_\+goal/result callbacks
+
+if goal is completed\+: goals\+\_\+reached\+\_\+number = goals\+\_\+reached\+\_\+number + 1 else if goal is cancelled\+: goals\+\_\+cancelled\+\_\+number = goals\+\_\+cancelled\+\_\+number + 1 end
+
+Define service response message Advertise /goals\+\_\+service service \`{}\`{}\`{}
+\begin{DoxyItemize}
+\item Given below is the service (srv) file definition. 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_autotoc_md13}{}\doxysubsection{\`{}\`{}\`{}}\label{index_autotoc_md13}
+string msg\+\_\+feedback \`{}\`{}\`{}
+
+
+\begin{DoxyItemize}
+\item The extra node {\ttfamily disp\+\_\+goals\+\_\+node} simple sends requests to the service server node {\ttfamily goal\+\_\+info\+\_\+srv\+\_\+node} at the specified rate defined in the launch file (which can be set by the user, the same for the node {\ttfamily robo\+\_\+info\+\_\+node}) to get the number of goals reached or cancelled and prints them on the terminal. The simple class definition for the node is given below\+: \`{}\`{}\`{}cpp class \mbox{\hyperlink{class_goal_info_client}{Goal\+Info\+Client}} \{ private\+: // Define the service client ros\+::\+Service\+Client goal\+\_\+info\+\_\+client; // Define the service message unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info goal\+\_\+info\+\_\+srv;
+
+public\+: \mbox{\hyperlink{class_goal_info_client}{Goal\+Info\+Client(ros\+::\+Node\+Handle $\ast$n, double freq)}} \{ // Set the frequency of the loop ros\+::\+Rate $\ast$loop\+\_\+rate; loop\+\_\+rate = new ros\+::\+Rate(freq);
+
+// Create the service client goal\+\_\+info\+\_\+client = n-\/$>$service\+Client$<$unige\+\_\+rt1\+\_\+assignment2\+::\+Goal\+Info$>$(\char`\"{}/goals\+\_\+service\char`\"{});
+
+while(ros\+::ok()) \{ // Call the service if (goal\+\_\+info\+\_\+client.\+call(goal\+\_\+info\+\_\+srv)) \{ R\+O\+S\+\_\+\+I\+N\+F\+O\+\_\+\+S\+T\+R\+E\+AM(goal\+\_\+info\+\_\+srv.\+response.\+msg\+\_\+feedback); \} else \{ R\+O\+S\+\_\+\+E\+R\+R\+OR(\char`\"{}\+Failed to call service /goals\+\_\+service\char`\"{}); \} // check for incoming messages ros\+::spin\+Once(); // sleep for the time remaining loop\+\_\+rate-\/$>$sleep(); \}
+
+delete loop\+\_\+rate; \} \}; \`{}\`{}\`{}
+\end{DoxyItemize}\hypertarget{index_autotoc_md14}{}\doxysubsection{Programming style}\label{index_autotoc_md14}
+This package uses C++ classes for implementation of the R\+OS Nodes, since the use of classes not only provides structure and clarity to the code, but also aids in proper management of data and methods. We also avoid using unnecessary global variables in the code. The programs simply become more modular, with reusable chunks which are beneficial in larger projects.\hypertarget{index_autotoc_md15}{}\doxysubsection{Possible Improvements}\label{index_autotoc_md15}
+
+\begin{DoxyItemize}
+\item The client console can be made even more robust, error-\/free and interactive, since some of the erroneous user-\/inputs have not been handled.
+\item An interactive G\+UI on the console can be created.
+\item Currently, there is no exit button / command, and the easiest way to exit simulation is using {\ttfamily Ctrl-\/C} on the main console, where {\ttfamily roslaunch} command is used. Better mechanism can be developed.
+\end{DoxyItemize}\hypertarget{index_autotoc_md16}{}\doxysubsection{Helpful references / documentation / answers\+:}\label{index_autotoc_md16}
+
+\begin{DoxyItemize}
+\item \href{http://wiki.ros.org/actionlib/DetailedDescription}{\texttt{ http\+://wiki.\+ros.\+org/actionlib/\+Detailed\+Description}}
+\item \href{http://docs.ros.org/en/api/actionlib_msgs/html/msg/GoalStatusArray.html}{\texttt{ http\+://docs.\+ros.\+org/en/api/actionlib\+\_\+msgs/html/msg/\+Goal\+Status\+Array.\+html}} 
+\end{DoxyItemize}

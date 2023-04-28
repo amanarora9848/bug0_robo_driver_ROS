@@ -1,0 +1,70 @@
+\hypertarget{class_robot_status_publisher}{}\doxysection{Robot\+Status\+Publisher Class Reference}
+\label{class_robot_status_publisher}\index{RobotStatusPublisher@{RobotStatusPublisher}}
+
+
+Publishes the position and velocity of the robot.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robot_status_publisher_ac1966142f1e9d923fc10ff8923a7c928}{Robot\+Status\+Publisher}} (ros\+::\+Node\+Handle $\ast$n, double freq)
+\item 
+void \mbox{\hyperlink{class_robot_status_publisher_a7f2cadfe5073b5202190fe3f7c6dddcd}{odom\+\_\+callback}} (const nav\+\_\+msgs\+::\+Odometry\+::\+Const\+Ptr \&msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Publishes the position and velocity of the robot. 
+
+This class is used to publish the position and velocity of the robot on the topic /robot/robo\+\_\+stats. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robot_status_publisher_ac1966142f1e9d923fc10ff8923a7c928}\label{class_robot_status_publisher_ac1966142f1e9d923fc10ff8923a7c928}} 
+\index{RobotStatusPublisher@{RobotStatusPublisher}!RobotStatusPublisher@{RobotStatusPublisher}}
+\index{RobotStatusPublisher@{RobotStatusPublisher}!RobotStatusPublisher@{RobotStatusPublisher}}
+\doxysubsubsection{\texorpdfstring{RobotStatusPublisher()}{RobotStatusPublisher()}}
+{\footnotesize\ttfamily Robot\+Status\+Publisher\+::\+Robot\+Status\+Publisher (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle $\ast$}]{n,  }\item[{double}]{freq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Subscribe to /odom topic to read the position and velocity of the robot with the subscribing queue size of 1 and call the odom\+\_\+callback function
+
+Inform R\+OS master that we will be publishing a message of type geometry\+\_\+msgs\+::\+Twist on the robot actuation topic with a publishing queue size of 10
+
+Publish the robot position and velocity on the robot\+\_\+pos\+\_\+vel\+\_\+publisher Publisher object at the rate of freq Hz
+
+$<$ Robot position x
+
+$<$ Robot position y
+
+$<$ Robot velocity x
+
+$<$ Robot velocity y
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robot_status_publisher_a7f2cadfe5073b5202190fe3f7c6dddcd}\label{class_robot_status_publisher_a7f2cadfe5073b5202190fe3f7c6dddcd}} 
+\index{RobotStatusPublisher@{RobotStatusPublisher}!odom\_callback@{odom\_callback}}
+\index{odom\_callback@{odom\_callback}!RobotStatusPublisher@{RobotStatusPublisher}}
+\doxysubsubsection{\texorpdfstring{odom\_callback()}{odom\_callback()}}
+{\footnotesize\ttfamily void Robot\+Status\+Publisher\+::odom\+\_\+callback (\begin{DoxyParamCaption}\item[{const nav\+\_\+msgs\+::\+Odometry\+::\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Callback function for the /odom topic. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & Message received on the /odom topic.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+This function gets called whenever a new message arrives on the /odom topic. It reads the position and velocity of the robot from the message and updates the robot position and velocity.
+
+$<$ Robot position x
+
+$<$ Robot position y
+
+$<$ Robot velocity x
+
+$<$ Robot velocity y
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{robot__status__pub_8cpp}{robot\+\_\+status\+\_\+pub.\+cpp}}\end{DoxyCompactItemize}

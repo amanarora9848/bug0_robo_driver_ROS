@@ -1,0 +1,58 @@
+\begin{theindex}
+
+  \item {average\_speed}
+    \subitem {RoboInfo}, \hyperpage{18}
+
+  \indexspace
+
+  \item {distance\_from\_goal}
+    \subitem {RoboInfo}, \hyperpage{18}
+
+  \indexspace
+
+  \item {GoalInfoClient}, \hyperpage{11}
+    \subitem {GoalInfoClient}, \hyperpage{11}
+  \item {goals\_service\_callback}
+    \subitem {GoalsService}, \hyperpage{13}
+  \item {GoalsService}, \hyperpage{12}
+    \subitem {goals\_service\_callback}, \hyperpage{13}
+    \subitem {GoalsService}, \hyperpage{12}
+    \subitem {target\_result\_callback}, \hyperpage{13}
+
+  \indexspace
+
+  \item {odom\_callback}
+    \subitem {RobotStatusPublisher}, \hyperpage{20}
+
+  \indexspace
+
+  \item {robo\_info\_callback}
+    \subitem {RoboInfo}, \hyperpage{18}
+  \item {RoboClient}, \hyperpage{15}
+    \subitem {RoboClient}, \hyperpage{15}
+  \item {RoboInfo}, \hyperpage{16}
+    \subitem {average\_speed}, \hyperpage{18}
+    \subitem {distance\_from\_goal}, \hyperpage{18}
+    \subitem {robo\_info\_callback}, \hyperpage{18}
+    \subitem {RoboInfo}, \hyperpage{17}
+    \subitem {show\_info}, \hyperpage{19}
+  \item {RobotStatusPublisher}, \hyperpage{19}
+    \subitem {odom\_callback}, \hyperpage{20}
+    \subitem {RobotStatusPublisher}, \hyperpage{20}
+
+  \indexspace
+
+  \item {show\_info}
+    \subitem {RoboInfo}, \hyperpage{19}
+  \item {src/disp\_goals.cpp}, \hyperpage{23}
+  \item {src/goal\_info\_srv.cpp}, \hyperpage{24}
+  \item {src/robo\_info.cpp}, \hyperpage{25}
+  \item {src/robot\_status\_pub.cpp}, \hyperpage{26}
+  \item {src/target\_info\_client.cpp}, \hyperpage{28}
+
+  \indexspace
+
+  \item {target\_result\_callback}
+    \subitem {GoalsService}, \hyperpage{13}
+
+\end{theindex}
