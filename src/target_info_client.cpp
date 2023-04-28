@@ -10,7 +10,7 @@ class RoboClient {
     double x, y;
     // Declare input string for user command
     std::string goal_input;
-
+    // Declare stack to store user commands
     std::stack<char> goal_stack;
 
     public:
@@ -32,6 +32,7 @@ class RoboClient {
         while(ros::ok()) {
             std::cout << "Enter [ p ] to input required goal position, or enter [ q ] to cancel the current set goal: ";
             std::cin >> goal_input;
+            // Check if user input is p or q
             if (goal_input == "p") {
                 // Check if q was previously entered and remove it from the stack
                 if (!goal_stack.empty()) {
@@ -40,6 +41,7 @@ class RoboClient {
                 // Get x and y position from user
                 std::cout << "Enter required goal position x y: ";
                 std::cin >> x >> y;
+                // Send goal to action server
                 goal.target_pose.pose.position.x = x;
                 goal.target_pose.pose.position.y = y;
                 target_ac.sendGoal(goal);
@@ -56,6 +58,7 @@ class RoboClient {
                 // Ensure that q has not already been pressed by user
                 if (goal_stack.empty()) {
                     goal_stack.push('q');
+                    // Check if there is a goal currently executing
                     if (target_ac.getState() == actionlib::SimpleClientGoalState::ACTIVE) {
                         std::cout << "Cancelling current goal..." << std::endl;
                         target_ac.cancelGoal();
