@@ -38,6 +38,3 @@ jobs:
         # Change the directory if changes in Doxyfile
         publish_dir: ./html
         enable_jekyll: true
-        allow_empty_commit: false
-        force_orphan: true
-        publish_branch: gh-pages
