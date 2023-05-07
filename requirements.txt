@@ -1,0 +1,8 @@
+actionlib==1.14.0
+ipython==8.13.2
+ipywidgets==7.7.5
+jupyros==0.6.1
+matplotlib==3.1.2
+numpy==1.17.4
+rospy==1.16.0
+sensor_msgs==1.13.1

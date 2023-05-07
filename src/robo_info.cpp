@@ -74,7 +74,7 @@ class RoboInfo {
 
         loop_rate = new ros::Rate(freq);
 
-        // Subscribe to custom message topic to read robot positiona nd velocity
+        // Subscribe to custom message topic to read robot position and velocity
         robot_pos_vel_subscriber = n->subscribe("/robot/robo_stats", 1, &RoboInfo::robo_info_callback, this);
 
         while(ros::ok()) {

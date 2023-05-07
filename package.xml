@@ -65,6 +65,7 @@
   <exec_depend>assignment_2_2022</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
+  <exec_depend>python-rosdep</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

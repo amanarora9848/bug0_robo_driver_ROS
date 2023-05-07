@@ -1,16 +1,20 @@
 <launch>
 
     <!-- Include package  assignment_2_2022 -->
-    <include file="$(find assignment_2_2022)/launch/assignment1.launch"/>
+    <include file="$(find assignment_2_2022)/launch/assignment1.launch" />
+    
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+    <node pkg="tf2_web_republisher" type="tf2_web_republisher" name="tf2_web_republisher" />
 
     <!-- Define the parameter /robot in parameter server -->
-    <rosparam command="load" file="$(find unige_rt1_assignment2)/config/robot.yaml"/>
+    <rosparam command="load" file="$(find unige_rt1_assignment2)/config/robot.yaml" />
 
     <!-- Define the frequency of the node -->
     <arg name="freq" default="5" />
 
     <!-- Launch the target_info_client_node -->
-    <node name="target_info_client_node" pkg="unige_rt1_assignment2" type="target_info_client_node" output="screen" launch-prefix="xterm -e" />
+    <!-- <node name="target_info_client_node" pkg="unige_rt1_assignment2" type="target_info_client_node" output="screen" launch-prefix="xterm -e" /> -->
+    <!-- <node name="target_info_client" pkg="unige_rt1_assignment2" type="target_info_client.py" output="screen" launch-prefix="xterm -e" /> -->
     <!-- Launch the robot_status_pub_node -->
     <node name="robot_status_pub_node" pkg="unige_rt1_assignment2" type="robot_status_pub_node" args="$(arg freq)" />
     <!-- Launch the robo_info_node -->
@@ -18,6 +22,6 @@
     <!-- Launch the goal_info_srv_node -->
     <node name="goal_info_srv_node" pkg="unige_rt1_assignment2" type="goal_info_srv_node" />
     <!-- Launch the disp_goal_node -->
-    <node name="disp_goals_node" pkg="unige_rt1_assignment2" type="disp_goals_node" args="$(arg freq)" output="screen" launch-prefix="xterm -e" />   
+    <node name="disp_goals_node" pkg="unige_rt1_assignment2" type="disp_goals_node" args="$(arg freq)" />   
 
 </launch>
