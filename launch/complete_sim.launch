@@ -18,7 +18,7 @@
     <!-- Launch the robot_status_pub_node -->
     <node name="robot_status_pub_node" pkg="unige_rt1_assignment2" type="robot_status_pub_node" args="$(arg freq)" />
     <!-- Launch the robo_info_node -->
-    <node name="robo_info_node" pkg="unige_rt1_assignment2" type="robo_info_node" args="$(arg freq)" output="screen" launch-prefix="xterm -e" />
+    <node name="robo_info_node" pkg="unige_rt1_assignment2" type="robo_info_node" args="$(arg freq)" />
     <!-- Launch the goal_info_srv_node -->
     <node name="goal_info_srv_node" pkg="unige_rt1_assignment2" type="goal_info_srv_node" />
     <!-- Launch the disp_goal_node -->
